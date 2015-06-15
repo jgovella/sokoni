@@ -1,0 +1,138 @@
+<ion-view view-title="Remmitance of Payment">
+  <ion-content>
+  <form ng-controller = "paymentCtrl as payment" name="paymentForm" novalidate="" 
+               ng-submit ="preview(paymentForm)">
+			   <div  ng-if ="WRegion">
+                <div class="info">
+				<a href="#/app/Paymentlocalstorage" ng-if="localSavedData.length > 0" class="button button-block button-clear button-positive ">
+                    You have {{localSavedData.length}} Item(s) waiting sync </a> 
+					</div>
+						<div class="subheader-content"  > <a href="#/app/setting" class="button button-block button-clear button-dark "
+                                             style="margin:0 !important">
+            <i class="icon ion-location"></i>&nbsp; {{WRegion}} &nbsp; >> &nbsp;{{WDistrict}}&nbsp;</a>   </div>
+                <div class="info" ng-if="isOffline">You work offline </div>
+			   
+<div class="list card">
+                <label class="item item-input item-select" ng-class="{'has-error-lr' : paymentForm.depot.$invalid  && paymentForm.$submitted}">
+                    <div class="input-label">
+                        Depot/Agent
+                    </div>
+                    <select ng-model="details.depot" ng-options="depot as depot.name for depot in depots " 
+                            ng-change="getAccountant(details.depot)" name="depot" required>
+                        <option disabled value="">Select</option>
+
+                    </select>
+
+                </label>
+                <label class="item item-input item-select"  ng-class="{'has-error-lr' :paymentForm.accountant.$invalid  && paymentForm.$submitted}">
+                    <div class="input-label">
+                       Accountant
+                    </div>
+                    <select ng-model="details.accountant" ng-disabled="accountantdisabled"
+                            ng-options=" accountant as  accountant.name for  accountant in  accountants " required name="accountant">
+                        <option disabled  value="">Select</option>
+                    </select>
+                </label>
+            </div>
+							<div class="list card">
+					<ul class="list">
+Mode of Payment
+  <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox" ng-model="cashbox" value="1">
+     </label>
+     Cash
+  </li>
+  <div class="list list-inset" ng-if ="cashbox > 0">
+   <label class="item item-input" ng-class="{'has-error-lr' : paymentForm.cash.$invalid  && paymentForm.$submitted}">
+              <input type="number" placeholder="Cash Amount" ng-model="details.cash" name="cash" required>
+          </label>
+		  </div>
+  <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox" ng-model="bankbox" value="1">
+     </label>
+     Bank Deposit
+  </li>
+  <div class="list list-inset" ng-if ="bankbox > 0">
+   <label class="item item-input">
+              <input type="number" placeholder="Bank Depot Amount" ng-model="details.bank">
+          </label>
+		  </div>
+  <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox" ng-model="chequebox" value="1">
+     </label>
+     Cheque Deposit
+  </li>
+   <div class="list list-inset" ng-if ="chequebox > 0">
+   <label class="item item-input">
+              <input type="number" placeholder="Cheque Deposit Amount" ng-model="details.cheque">
+          </label>
+		  </div>
+   <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox" ng-model="mpesabox" value="1">
+     </label>
+     M-Pesa
+  </li>
+  <div class="list list-inset" ng-if ="mpesabox > 0">
+   <label class="item item-input">
+              <input type="number" placeholder="M-pesa Amount" ng-model="details.mpesa">
+          </label>
+		  </div>
+</ul>
+</div>
+<div class="list card">
+<label class="item item-input" ng-class="{'has-error-lr' : paymentForm.amount.$invalid  && paymentForm.$submitted}" >
+                    <div class="input-label">
+                       Total Amount
+                    </div>
+                    <input type="number" ng-model="details.amount" name="amount" placeholder="0" required>
+                </label>
+				<label class="item item-input" >
+                    <div class="input-label">
+                       Reference #
+                    </div>
+                <input type="text" ng-model="details.reference">
+                </label>
+            </div>
+			<div class="padding-left padding-right" >
+                <a href ng-click="getPhoto()" class=" button button-block " ng-show="!details.officerImage">
+                            <i class="icon ion-camera"></i> &nbsp;&nbsp;Take Photo
+                            <input type="hidden" name="image" ng-model="details.officerImage">
+                        </a>
+                     <a href ng-click="viewPhoto()" class=" button button-block " ng-show="details.officerImage">
+                            <i class="icon ion-image"></i> &nbsp;&nbsp; View Photo
+                        </a>
+                </div>
+<button class="button button-block button-calm">Send Data</button>
+</div>
+<div ng-if="!WRegion">
+                <div class="card"> <div class="item">Set working location in settings </div></div>
+                <div class="padding">
+                    <a class="button button-block " href="#/app/setting" >
+                        <i class="ion-gear-b icon"></i>&nbsp;settings
+                    </a>
+                </div>
+            </div>
+</form>
+ <script id="image.html" type="text/ng-template">
+            <ion-modal-view>
+            <ion-header-bar>
+            <h1 class="title">Image</h1>
+             <button ng-click="imageModal.hide()" class="button">
+             <i class="icon ion-android-close"></i> close</button>
+            </ion-header-bar>
+            <ion-content>
+            <div class="card">
+            <div class="image-box">
+           <img ng-show="details.officerImage" ng-src="data:image/jpeg;base64,{{details.officerImage}}">
+            </div>
+            </div>
+            <button class="button button-block button-assertive" ng-click="imageDelete()" > remove</button>
+            </ion-content>
+            </ion-modal-view>
+        </script>
+  </ion-content>
+</ion-view>

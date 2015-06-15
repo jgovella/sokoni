@@ -1,0 +1,52 @@
+<ion-view view-title="Payment Local storage" ng-controller="PaymentlocalstorageCtr">
+    <ion-content>
+        <button ng-click="init()" class="button button-block button-clear button-positive ">
+            <i class="ion-refresh icon"></i>&nbsp; Refresh</button>  
+        <div class="card">
+           <div class="item item-divider"> Payments record <b ng-if ="paymentItems.length > 0">({{paymentItems.length}})</b> </div> 
+            <div class="item " ng-if ="!paymentItems.length">No data available</div>
+            <label class="item item-input item-button-right" ng-repeat ="paymentItem in paymentItems" >
+                <div class="input-label">
+                    Payment
+                </div>
+                <button ng-click="previewItem(paymentItem)" class="button "><i class="icon ion-eye "></i></button>  
+            </label>
+            <div class="item item-divider" ng-if ="paymentItems.length > 0">
+                <a href ng-click="sychronizePayment()" class="button icon-left ion-loop">sychronize</a>  
+                <a href ng-click="clearPaymentItems()" class="button icon-left ion-trash-a">Clear all</a>
+            </div>
+        </div>    
+        <div class="card">
+            <div class="item item-divider"> Downloaded from server </div> 
+            <div class="item " ng-if ="!paymentInitDetails.accountants">No data available</div>
+            <label class="item item-input item-button-right" ng-if ="paymentInitDetails.accountants" >
+                <div class="input-label">
+                    Accountants
+                </div>
+                <button ng-click="previewAccountants()" class="button"><i class="icon ion-eye "></i></button>  
+            </label>
+            <div class="item item-divider">  
+			    <a href ng-click="updateData()" class="button icon-left ion-loop">update</a>
+                <a href ng-click="clearData()" class="button icon-left ion-trash-a" ng-if="paymentInitDetails.accountants">Clear all</a>
+            </div>
+        </div>
+        <script id="accountants.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Accountants</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+      <div class="item" ng-repeat="account in accountants">
+      {{account.name}}
+            </div>
+            </div>
+    </ion-content>
+  </ion-modal-view>
+        </script>
+    </ion-content>
+     <div class="bar bar-footer " style="padding: 0;">
+         <button ng-click="clearStorage()" class="button button-assertive button-block" style="margin: 0">
+                <i class="ion-trash-a icon"></i>&nbsp;clear local storage</button>
+        </div>
+</ion-view>

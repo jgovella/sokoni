@@ -1,0 +1,50 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Payment preview</h1>
+		<button ng-click="closePreview()" class="button"><i class="icon ion-android-close"></i> close</button>
+    </ion-header-bar>
+    <ion-content>
+			<div class="padding">
+<table>
+  <tr>
+    <td>Depot/Agent</td>
+	<td> {{details.depot.name}}</td>
+	</tr>
+	<tr>
+    <td>Accountant Name</td>
+	 <td> {{details.accountant.name}}</td>
+	</tr>
+	<tr>
+	<td>Cash</td>
+	 <td>{{details.cash | number}}</td>
+	</tr>
+	<tr>
+    <td>Bank Deposit</td>
+	  <td>{{details.bank | number}}</td>
+	</tr>
+	<tr>
+    <td>Cheque</td>
+	  <td>{{details.cheque | number}}</td>
+	</tr>
+	<tr>
+	<td>M-Pesa</td>
+	  <td>{{details.mpesa | number}}</td>
+  </tr>
+  <tr>
+	<td>Total Amount</td>
+	  <td>{{details.amount | number}}</td>
+  </tr>
+  <tr>
+	<td>Reference</td>
+	  <td>{{details.reference}}</td>
+  </tr>
+</table>
+			</div>
+            <div class="padding">
+			<button ng-if="islocalstorage" ng-click="remove()" class="button icon-left ion-ios-trash-outline button-assertive">delete</button>
+                <button class="button button-royal" ng-click ="save()" ng-if="!islocalstorage">
+                    Confirm Saving
+                </button>
+            </div>
+    </ion-content>
+</ion-modal-view>

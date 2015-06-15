@@ -1,0 +1,40 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Stock preview</h1>
+		<button ng-click="closePreview()" class="button"><i class="icon ion-android-close"></i> close</button>
+    </ion-header-bar>
+    <ion-content>
+          <div class="list card">
+                <label class="item item-input">
+                    <div class="input-label">
+                        Factory Depot
+                    </div>
+                   {{details.depot.name}}
+                </label>
+                <label class="item item-input">
+                    <div class="input-label">
+                        Stock issuing officer
+                    </div>
+                    {{details.officer.name}}
+                </label>
+            </div>
+			<div class="padding">
+			<table>
+  <tr>
+    <td>Brand Name</td>
+    <td>Quantity</td>
+  </tr>
+  <tr ng-repeat= "elemnt in brandElemnts">
+    <td>{{elemnt.name.name}}</td>
+    <td>{{elemnt.quantity}}</td>
+  </tr>
+</table>
+</div>
+            <div class="padding">
+			<button ng-if="islocalstorage" ng-click="remove()" class="button icon-left ion-ios-trash-outline button-assertive">delete</button>
+                <button class="button button-royal" ng-click ="save()" ng-if="!islocalstorage">
+                    Confirm Saving
+                </button>
+            </div>
+    </ion-content>
+</ion-modal-view>

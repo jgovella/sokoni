@@ -1,0 +1,84 @@
+<ion-view view-title="Fuel Management">
+      <ion-content class="padding">
+	   <form ng-controller = "fuelCtrl as fuel" name="fuelForm" novalidate="" 
+               ng-submit ="preview(fuelForm)">
+			   <div class="info">
+				<a href="#/app/Fuellocalstorage" ng-if="localSavedData.length > 0" class="button button-block button-clear button-positive ">
+                    You have {{localSavedData.length}} Item(s) waiting sync </a> 
+					</div>
+			    <div class="info" ng-if="isOffline">You work offline </div>
+      <div class="list list-inset">
+          <label class="item item-input" ng-class="{ 'has-error-lr' :fuelForm.reg.$invalid  && fuelForm.$submitted}">
+              <input type="text" placeholder="Enter Registration Number" ng-model="details.reg" name="reg" required>
+          </label>
+          <label class="item item-input" ng-class="{ 'has-error-lr' :fuelForm.mileage.$invalid  && fuelForm.$submitted}">
+              <input type="number" placeholder="Enter Mileage" ng-model="details.mileage" name="mileage" required>
+          </label>
+		  <label class="item item-input" ng-class="{ 'has-error-lr' :fuelForm.litre.$invalid  && fuelForm.$submitted}">
+              <input type="number" placeholder="Enter Litres Filled" ng-model="details.litre" name="litre" required>
+          </label>
+		  <label class="item item-input" ng-class="{ 'has-error-lr' :fuelForm.cost.$invalid  && fuelForm.$submitted}">
+              <input type="number" placeholder="Enter Cost per Litre" ng-model="details.cost" name="cost" required>
+          </label>
+		  <label class="item item-input" ng-class="{ 'has-error-lr' :fuelForm.amount.$invalid  && fuelForm.$submitted}">
+              <input type="number" placeholder="Total Amount Paid" ng-model="details.amount" name="amount" required>
+          </label>
+      </div>
+	  <div class="padding-left padding-right" >
+                <a href ng-click="getPhoto()" class=" button button-block " ng-show="!details.officerImage">
+                            <i class="icon ion-camera"></i> &nbsp;&nbsp;Take Photo
+                            <input type="hidden" name="image" ng-model="details.officerImage">
+                        </a>
+                     <a href ng-click="viewPhoto()" class=" button button-block " ng-show="details.officerImage">
+                            <i class="icon ion-image"></i> &nbsp;&nbsp; View Photo
+                        </a>
+                </div>
+	  <div class="padding-left padding-right" >
+                <a href ng-click="getLocation()" class=" button button-block" ng-show="!details.coordinates">
+                            <i class="icon ion-location"></i> &nbsp;&nbsp;Get Location
+							<input type="hidden" name="location" ng-model="details.coordinates">
+                        </a>
+						<a href ng-click="viewLocation()" class=" button button-block " ng-show="details.coordinates">
+                            <i class="icon ion-image"></i> &nbsp;&nbsp; View Location
+                        </a>
+                </div>
+      <button class="button button-block button-calm">Send data</button>
+	  </form>
+	   <script id="location.html" type="text/ng-template">
+            <ion-modal-view>
+            <ion-header-bar>
+            <h1 class="title">Location</h1>
+             <button ng-click="locationModal.hide()" class="button">
+             <i class="icon ion-android-close"></i> close</button>
+            </ion-header-bar>
+            <ion-content>
+			<div class="list card">
+                <label class="item item-input">
+                    <div class="input-label">
+                        Reading
+                    </div>
+                   {{details.coordinates}}
+                </label>
+            </div>
+            </ion-content>
+            </ion-modal-view>
+        </script>
+		 <script id="image.html" type="text/ng-template">
+            <ion-modal-view>
+            <ion-header-bar>
+            <h1 class="title">Receipt Image</h1>
+             <button ng-click="imageModal.hide()" class="button">
+             <i class="icon ion-android-close"></i> close</button>
+            </ion-header-bar>
+            <ion-content>
+            <div class="card">
+            <div class="image-box">
+           <img ng-show="details.officerImage" ng-src="data:image/jpeg;base64,{{details.officerImage}}">
+            </div>
+            </div>
+            <button class="button button-block button-assertive" ng-click="imageDelete()" > remove</button>
+            </ion-content>
+            </ion-modal-view>
+        </script>
+  </ion-content>
+</ion-view>

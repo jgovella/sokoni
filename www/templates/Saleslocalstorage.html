@@ -1,0 +1,52 @@
+<ion-view view-title="Sales Local storage" ng-controller="SaleslocalstorageCtr">
+    <ion-content>
+        <button ng-click="init()" class="button button-block button-clear button-positive ">
+            <i class="ion-refresh icon"></i>&nbsp; Refresh</button>  
+        <div class="card">
+           <div class="item item-divider"> Sales Items <b ng-if ="saleItems.length > 0">({{saleItems.length}})</b> </div> 
+            <div class="item " ng-if ="!saleItems.length">No data available</div>
+            <label class="item item-input item-button-right" ng-repeat ="saleItem in saleItems" >
+                <div class="input-label">
+                    Sales 
+                </div>
+                <button ng-click="previewItem(saleItem)" class="button "><i class="icon ion-eye "></i></button>  
+            </label>
+            <div class="item item-divider" ng-if ="saleItems.length > 0">
+                <a href ng-click="sychronizeSale()" class="button icon-left ion-loop">sychronize</a>  
+                <a href ng-click="clearSaleItems()" class="button icon-left ion-trash-a">Clear all</a>
+            </div>
+        </div>    
+        <div class="card">
+            <div class="item item-divider"> Downloaded from server </div> 
+            <div class="item " ng-if ="!saleInitDetails.customers">No data available</div>
+            <label class="item item-input item-button-right" ng-if ="saleInitDetails.customers" >
+                <div class="input-label">
+                    Customers
+                </div>
+                <button ng-click="previewCustomers()" class="button"><i class="icon ion-eye "></i></button>  
+            </label>
+            <div class="item item-divider">  
+			    <a href ng-click="updateData()" class="button icon-left ion-loop">update</a>
+                <a href ng-click="clearData()" class="button icon-left ion-trash-a" ng-if="saleInitDetails.customers">Clear all</a>
+            </div>
+        </div>
+        <script id="customers.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Customers</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+      <div class="item" ng-repeat="customer in customers">
+      {{customer.name}}
+            </div>
+            </div>
+    </ion-content>
+  </ion-modal-view>
+        </script>
+    </ion-content>
+     <div class="bar bar-footer " style="padding: 0;">
+         <button ng-click="clearStorage()" class="button button-assertive button-block" style="margin: 0">
+                <i class="ion-trash-a icon"></i>&nbsp;clear local storage</button>
+        </div>
+</ion-view>

@@ -1,0 +1,24 @@
+<ion-view view-title="Market Intelligence Local storage" ng-controller="MarketlocalstorageCtr">
+    <ion-content>
+        <button ng-click="init()" class="button button-block button-clear button-positive ">
+            <i class="ion-refresh icon"></i>&nbsp; Refresh Now</button>  
+        <div class="card">
+           <div class="item item-divider"> Market Record <b ng-if ="marketItems.length > 0">({{marketItems.length}})</b> </div> 
+            <div class="item " ng-if ="!marketItems.length">No data available</div>
+            <label class="item item-input item-button-right" ng-repeat ="marketItem in marketItems" >
+                <div class="input-label">
+                    Market
+                </div>
+                <button ng-click="previewItem(marketItem)" class="button "><i class="icon ion-eye "></i></button>  
+            </label>
+            <div class="item item-divider" ng-if ="marketItems.length > 0">
+                <a href ng-click="sychronizeMarket()" class="button icon-left ion-loop">sychronize</a>  
+                <a href ng-click="clearMarketItems()" class="button icon-left ion-trash-a">Clear all</a>
+            </div>
+        </div>    
+    </ion-content>
+     <div class="bar bar-footer " style="padding: 0;">
+         <button ng-click="clearStorage()" class="button button-assertive button-block" style="margin: 0">
+                <i class="ion-trash-a icon"></i>&nbsp;clear local storage</button>
+        </div>
+</ion-view>

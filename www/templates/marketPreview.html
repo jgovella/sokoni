@@ -1,0 +1,152 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Market preview</h1>
+		<button ng-click="closePreview()" class="button"><i class="icon ion-android-close"></i> close</button>
+    </ion-header-bar>
+    <ion-content>
+			<div class="list card">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Customer Name
+                    </div>
+                    {{details.customer.name}}
+                </label>
+            </div>
+<div class="card">
+               <div class="item item-divider"> <strong>K-Vant </strong></div> 
+                <div class="list-inset" style="margin:0 !important">
+                   <label class="item item-input item-select">
+                  <div class="input-label">
+                  Branding
+                  </div>
+                <select ng-model="details.kvant">
+	            <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+                 </select>
+               </label>
+			   <label class="item item-input item-select">
+                  <div class="input-label">
+                  Availability
+                  </div>
+                <select ng-model="details.kvanta">
+	            <option value="">Select</option>
+                <option value="1">Available and Visible</option>
+                <option value="2">Available Not Visible</option>
+				<option value="3">Not Available</option>
+                 </select>
+               </label>
+                </div>  
+            </div>
+			<div class="card">
+               <div class="item item-divider"><strong>K Kiroba Original</strong></div> 
+                <div class="list-inset" style="margin:0 !important">
+                   <label class="item item-input item-select"  >
+                  <div class="input-label">
+                  Branding
+                  </div>
+                <select ng-model="details.kiroba" >
+	            <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+                 </select>
+               </label>
+			   <label class="item item-input item-select">
+                  <div class="input-label">
+                  Availability
+                  </div>
+                <select ng-model="details.kirobaa">
+	            <option value="">Select</option>
+                <option value="1">Available and Visible</option>
+                <option value="2">Available Not Visible</option>
+				<option value="3">Not Available</option>
+                 </select>
+               </label>
+                </div>  
+            </div>
+			<div class="card">
+               <div class="item item-divider"><strong>K Van-Roh</strong></div> 
+                <div class="list-inset" style="margin:0 !important">
+                   <label class="item item-input item-select">
+                  <div class="input-label">
+                  Branding
+                  </div>
+                <select ng-model="details.van">
+	            <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+                 </select>
+               </label>
+			   <label class="item item-input item-select">
+                  <div class="input-label">
+                  Availability
+                  </div>
+                <select ng-model="details.vana">
+	            <option value="">Select</option>
+                <option value="1">Available and Visible</option>
+                <option value="2">Available Not Visible</option>
+				<option value="3">Not Available</option>
+                 </select>
+               </label>
+                </div>  
+            </div>
+			<div class="card">
+               <div class="item item-divider"><strong>K Konyagi</strong></div> 
+                <div class="list-inset" style="margin:0 !important">
+                   <label class="item item-input item-select">
+                  <div class="input-label">
+                  Branding
+                  </div>
+                <select ng-model="details.konyagi">
+	            <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+                 </select>
+               </label>
+			   <label class="item item-input item-select">
+                  <div class="input-label">
+                  Availability
+                  </div>
+                <select ng-model="details.konyagia">
+	            <option value="">Select</option>
+                <option value="1">Available and Visible</option>
+                <option value="2">Available Not Visible</option>
+				<option value="3">Not Available</option>
+                 </select>
+               </label>
+                </div>  
+            </div>
+			<div class="card">
+               <div class="item item-divider"><strong> Valuer</strong></div> 
+                <div class="list-inset" style="margin:0 !important">
+                   <label class="item item-input item-select">
+                  <div class="input-label">
+                  Branding
+                  </div>
+                <select ng-model="details.valuer">
+	            <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+                 </select>
+               </label>
+			   <label class="item item-input item-select">
+                  <div class="input-label">
+                  Availability
+                  </div>
+                <select ng-model="details.valuera">
+	            <option value="">Select</option>
+                <option value="1">Available and Visible</option>
+                <option value="2">Available Not Visible</option>
+				<option value="3">Not Available</option>
+                 </select>
+               </label>
+                </div>  
+				</div>
+            <div class="padding">
+			<button ng-if="islocalstorage" ng-click="remove()" class="button icon-left ion-ios-trash-outline button-assertive">delete</button>
+                <button class="button button-royal" ng-click ="save()" ng-if="!islocalstorage">
+                    Confirm Saving
+                </button>
+            </div>
+    </ion-content>
+</ion-modal-view>

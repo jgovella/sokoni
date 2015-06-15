@@ -1,0 +1,46 @@
+<ion-view view-title="Customer Registration">
+      <ion-content class="padding">
+	   <form ng-controller = "customerCtrl as customer" name="customerForm" novalidate="" 
+               ng-submit ="preview(customerForm)">
+			    <div class="info" ng-if="isOffline">You work offline </div>
+      <div class="list list-inset">
+          <label class="item item-input" ng-class="{ 'has-error-lr' :customerForm.customer.$invalid  && customerForm.$submitted}">
+              <input type="text" placeholder="Enter Customer Name" ng-model="details.customer" name="customer" required>
+          </label>
+		  <label class="item item-input">
+              <input type="text" placeholder="Enter Email" ng-model="details.email">
+          </label>
+		  <label class="item item-input" ng-class="{ 'has-error-lr' :customerForm.phone.$invalid  && customerForm.$submitted}">
+              <input type="number" placeholder="Enter Phone" ng-model="details.phone" name="phone" required>
+          </label>
+		  <label class="item item-input" ng-class="{ 'has-error-lr' :customerForm.outlet.$invalid  && customerForm.$submitted}">
+              <input type="text" placeholder="Type of Outlet" ng-model="details.outlet" name="outlet" required>
+          </label>
+		   <label class="item item-input" ng-class="{ 'has-error-lr' :customerForm.year.$invalid  && customerForm.$submitted}">
+              <input type="number" placeholder="Year of Establishment" ng-model="details.year" name="year" required>
+          </label>
+      </div>
+	  <div class="list card">
+                <label class="item item-input item-select" ng-class="{'has-error-lr' : customerForm.region.$invalid  && customerForm.$submitted}">
+                    <div class="input-label">
+                        Location
+                    </div>
+                    <select ng-model="details.region" ng-options="region as region.name for region in regions " 
+                            ng-change="getZones(details.region)" name="region" required>
+                        <option disabled value="">Select</option>
+                    </select>
+                </label>
+				 <label class="item item-input item-select" ng-class="{'has-error-lr' : customerForm.zone.$invalid  && customerForm.$submitted}">
+                    <div class="input-label">
+                       Territory
+                    </div>
+                    <select ng-model="details.zone" ng-disabled="zonedisabled"
+                            ng-options=" zone as  zone.name for  zone in zones " name="zone" required>
+                        <option disabled  value="">Select</option>
+                    </select>
+                </label>
+            </div>
+      <button class="button button-block button-calm">Send data</button>
+	  </form>
+  </ion-content>
+</ion-view>

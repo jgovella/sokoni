@@ -1,0 +1,73 @@
+<ion-view view-title="Local storage" ng-controller="localstorageCtr">
+    <ion-content>
+        <button ng-click="init()" class="button button-block button-clear button-positive ">
+            <i class="ion-refresh icon"></i>&nbsp; Refresh</button>  
+        <div class="card">
+           <div class="item item-divider"> Stock Items <b ng-if ="stockItems.length > 0">({{stockItems.length}})</b> </div> 
+            <div class="item " ng-if ="!stockItems.length">No data available</div>
+            <label class="item item-input item-button-right" ng-repeat ="stockItem in stockItems" >
+                <div class="input-label">
+                    stock 
+                </div>
+                <button ng-click="previewItem(stockItem)" class="button "><i class="icon ion-eye "></i></button>  
+            </label>
+            <div class="item item-divider" ng-if ="stockItems.length > 0">
+                <a href ng-click="sychronizeStock()" class="button icon-left ion-loop">sychronize</a>  
+                <a href ng-click="clearStockItems()" class="button icon-left ion-trash-a">Clear all</a>
+            </div>
+        </div>    
+        <div class="card">
+            <div class="item item-divider"> Downloaded from server </div> 
+            <div class="item " ng-if ="!stockInitDetails.depots">No data available</div>
+            <label class="item item-input item-button-right" ng-if ="stockInitDetails.depots" >
+                <div class="input-label">
+                    Depots
+                </div>
+                <button ng-click="previewDepots()" class="button"><i class="icon ion-eye "></i></button>  
+            </label>
+            <label class="item item-input item-button-right" ng-if ="stockInitDetails.officers" >
+                <div class="input-label">
+                    Officers
+                </div>
+                <button  ng-click="previewOfficers()" class="button"><i class="icon ion-eye "></i></button>    
+            </label>
+            <div class="item item-divider">
+                <a href ng-click="updateData()" class="button icon-left ion-loop">update</a>  
+                <a href ng-click="clearData()" class="button icon-left ion-trash-a" ng-if="stockInitDetails.depots">Clear all</a>
+            </div>
+
+        </div>
+        <script id="depots.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Depots</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+      <div class="item" ng-repeat="depot in depots">
+      {{depot.name}}
+            </div>
+            </div>
+    </ion-content>
+  </ion-modal-view>
+        </script>
+        <script id="officers.html" type="text/ng-template">
+            <ion-modal-view>
+            <ion-header-bar>
+            <h1 class="title">Officers</h1>
+            </ion-header-bar>
+            <ion-content>
+            <div class="list">
+            <div class="item" ng-repeat="officer in officers">
+            {{officer.name}}
+            </div>
+            </div>
+            </ion-content>
+            </ion-modal-view>
+        </script>
+    </ion-content>
+     <div class="bar bar-footer " style="padding: 0;">
+         <button ng-click="clearStorage()" class="button button-assertive button-block" style="margin: 0">
+                <i class="ion-trash-a icon"></i>&nbsp;clear local storage</button>
+        </div>
+</ion-view>

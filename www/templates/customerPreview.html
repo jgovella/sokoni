@@ -1,0 +1,46 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Customer preview</h1>
+		<button ng-click="closePreview()" class="button"><i class="icon ion-android-close"></i> close</button>
+    </ion-header-bar>
+    <ion-content>
+			<div class="padding">
+			<table>
+  <tr>
+    <td>Customer Name</td>
+	<td>{{details.customer}}</td>
+	</tr>
+	<tr>
+	<td>Email</td>
+	 <td>{{details.email}}</td>
+	</tr>
+	<tr>
+    <td>Phone</td>
+	  <td>{{details.phone}}</td>
+	</tr>
+	<tr>
+	<td>Outlet</td>
+	  <td>{{details.outlet}}</td>
+  </tr>
+  <tr>
+	<td>Year</td>
+	  <td>{{details.year}}</td>
+  </tr>
+   <tr>
+	<td>Location</td>
+	  <td>{{details.region.name}}</td>
+  </tr>
+   <tr>
+	<td>Territory</td>
+	  <td>{{details.zone.name}}</td>
+  </tr>
+</table>
+</div>
+            <div class="padding">
+                <button ng-if="islocalstorage" ng-click="remove()" class="button icon-left ion-ios-trash-outline button-assertive">delete</button>
+                <button class="button button-royal" ng-click ="save()" ng-if="!islocalstorage">
+                    Confirm Saving
+                </button>
+            </div>
+    </ion-content>
+</ion-modal-view>

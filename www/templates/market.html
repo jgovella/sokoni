@@ -1,0 +1,193 @@
+<ion-view view-title="Market Intelligence">
+  <ion-content>
+  <form name="marketForm" ng-controller = "marketCtrl" novalidate="" ng-submit ="preview(marketForm)">
+  <div ng-if="WRegion">
+  <div class="info">
+				<a href="#/app/Marketlocalstorage" ng-if="localSavedData.length > 0" class="button button-block button-clear button-positive ">
+                    You have {{localSavedData.length}} Item(s) waiting sync </a> 
+					</div>
+					<div class="subheader-content"  > <a href="#/app/setting" class="button button-block button-clear button-dark "
+                                             style="margin:0 !important">
+            <i class="icon ion-location"></i>&nbsp; {{WRegion}} &nbsp; >> &nbsp;{{WDistrict}}&nbsp;</a>   </div>
+                <div class="info" ng-if="isOffline">You work offline </div>
+<div class="list card">
+                <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.customer.$invalid  && marketForm.$submitted}">
+                    <div class="input-label">
+                        Customer Name
+                    </div>
+                    <select ng-model="details.customer" ng-options="customer as customer.name for customer in customers " name="customer" required>
+                        <option disabled value="">Select</option>
+                    </select>
+                </label>
+            </div>
+<div class="card">
+               <div class="item item-divider"> <strong>K-Vant </strong></div> 
+                <div class="list-inset" style="margin:0 !important">
+                   <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.kvant.$invalid  && marketForm.$submitted}">
+                  <div class="input-label">
+                  Branding
+                  </div>
+                <select ng-model="details.kvant" name="kvant" required>
+	            <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+                 </select>
+               </label>
+			   <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.kvanta.$invalid  && marketForm.$submitted}">
+                  <div class="input-label">
+                  Availability
+                  </div>
+                <select ng-model="details.kvanta" name="kvanta" required>
+	            <option value="">Select</option>
+                <option value="1">Available and Visible</option>
+                <option value="2">Available Not Visible</option>
+				<option value="3">Not Available</option>
+                 </select>
+               </label>
+                </div>  
+            </div>
+			<div class="card">
+               <div class="item item-divider"><strong>Kiroba Original</strong></div> 
+                <div class="list-inset" style="margin:0 !important">
+                   <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.kiroba.$invalid  && marketForm.$submitted}" >
+                  <div class="input-label">
+                  Branding
+                  </div>
+                <select ng-model="details.kiroba" name="kiroba" required>
+	            <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+                 </select>
+               </label>
+			   <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.kirobaa.$invalid  && marketForm.$submitted}">
+                  <div class="input-label">
+                  Availability
+                  </div>
+                <select ng-model="details.kirobaa" name="kirobaa" required>
+	            <option value="">Select</option>
+                <option value="1">Available and Visible</option>
+                <option value="2">Available Not Visible</option>
+				<option value="3">Not Available</option>
+                 </select>
+               </label>
+                </div>  
+            </div>
+			<div class="card">
+               <div class="item item-divider"><strong>K Van-Roh</strong></div> 
+                <div class="list-inset" style="margin:0 !important">
+                   <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.van.$invalid  && marketForm.$submitted}">
+                  <div class="input-label">
+                  Branding
+                  </div>
+                <select ng-model="details.van" name="van" required>
+	            <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+                 </select>
+               </label>
+			   <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.vana.$invalid  && marketForm.$submitted}">
+                  <div class="input-label">
+                  Availability
+                  </div>
+                <select ng-model="details.vana" name="vana" required>
+	            <option value="">Select</option>
+                <option value="1">Available and Visible</option>
+                <option value="2">Available Not Visible</option>
+				<option value="3">Not Available</option>
+                 </select>
+               </label>
+                </div>  
+            </div>
+			<div class="card">
+               <div class="item item-divider"><strong>K Konyagi</strong></div> 
+                <div class="list-inset" style="margin:0 !important">
+                   <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.konyagi.$invalid  && marketForm.$submitted}">
+                  <div class="input-label">
+                  Branding
+                  </div>
+                <select ng-model="details.konyagi" name="konyagi" required>
+	            <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+                 </select>
+               </label>
+			   <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.konyagia.$invalid  && marketForm.$submitted}">
+                  <div class="input-label">
+                  Availability
+                  </div>
+                <select ng-model="details.konyagia" name="konyagia" required>
+	            <option value="">Select</option>
+                <option value="1">Available and Visible</option>
+                <option value="2">Available Not Visible</option>
+				<option value="3">Not Available</option>
+                 </select>
+               </label>
+                </div>  
+            </div>
+			<div class="card">
+               <div class="item item-divider"><strong> Valuer</strong></div> 
+                <div class="list-inset" style="margin:0 !important">
+                   <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.valuer.$invalid  && marketForm.$submitted}">
+                  <div class="input-label">
+                  Branding
+                  </div>
+                <select ng-model="details.valuer" name="valuer" required>
+	            <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+                 </select>
+               </label>
+			   <label class="item item-input item-select" ng-class="{'has-error-lr' : marketForm.valuera.$invalid  && marketForm.$submitted}">
+                  <div class="input-label">
+                  Availability
+                  </div>
+                <select ng-model="details.valuera" name="valuera" required>
+	            <option value="">Select</option>
+                <option value="1">Available and Visible</option>
+                <option value="2">Available Not Visible</option>
+				<option value="3">Not Available</option>
+                 </select>
+               </label>
+                </div>  
+            </div>
+			<div class="padding-left padding-right" >
+                <a href ng-click="getLocation()" class=" button button-block" ng-show="!details.coordinates">
+                            <i class="icon ion-location"></i> &nbsp;&nbsp;Get Location
+							<input type="hidden" name="location" ng-model="details.coordinates">
+                        </a>
+						<a href ng-click="viewLocation()" class=" button button-block " ng-show="details.coordinates">
+                            <i class="icon ion-image"></i> &nbsp;&nbsp; View Location
+                        </a>
+                </div>
+<button class="button button-block button-calm">Send Data</button>
+</div>
+<div ng-if="!WRegion">
+                <div class="card"> <div class="item">Set working location in settings </div></div>
+                <div class="padding">
+                    <a class="button button-block " href="#/app/setting" >
+                        <i class="ion-gear-b icon"></i>&nbsp;settings
+                    </a>
+                </div>
+            </div>
+</form>
+ <script id="location.html" type="text/ng-template">
+            <ion-modal-view>
+            <ion-header-bar>
+            <h1 class="title">Location</h1>
+             <button ng-click="imageModal.hide()" class="button">
+             <i class="icon ion-android-close"></i> close</button>
+            </ion-header-bar>
+            <ion-content>
+			<div class="list card">
+                <label class="item item-input">
+                    <div class="input-label">
+                        Reading
+                    </div>
+                   {{details.coordinates}}
+                </label>
+            </div>
+            </ion-content>
+            </ion-modal-view>
+        </script>
+  </ion-content>
+</ion-view>
