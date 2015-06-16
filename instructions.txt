@@ -1,0 +1,10 @@
+Installation
+1. Donwload the sokoni installation file (sokoni.apk) to your mobile device
+2. After a complete donwload, click install
+3. Follow instructions to complete the install
+
+Initial log in
+1. Once installed, click sokoni icon on your mobile to start the application
+2. On the log in screen, type username: sokoni and password: 12345
+3. Once logged in, configure your working area in order to download pre-required data
+4. Navigate through different module of the application
